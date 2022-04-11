@@ -30,11 +30,8 @@ function App() {
 
   return (
     <div className="app">
-      <h1 class="text-3xl font-bold underline">
-        Hello world!
-      </h1>
-      <Currently />
-      <Forecast />
+      <Currently current={weather.current}/>
+      <Forecast forecast={weather.daily}/>
       <Hourly />
     </div>
   );
