@@ -3,7 +3,7 @@ import React from 'react';
 import { TiLocationArrowOutline } from "react-icons/ti";
 
 //weather icons
-import { WiDaySunny, WiNightClear, WiDayCloudy, WiNightAltCloudy, WiCloudy} from "react-icons/wi";
+import { WiDaySunny, WiNightClear, WiDaySunnyOvercast, WiNightPartlyCloudy, WiDayCloudy, WiNightAltCloudy, WiCloudy} from "react-icons/wi";
 
 
 export default function Currently(props) {
@@ -22,7 +22,13 @@ export default function Currently(props) {
         case '02n':
             icon = <WiNightAltCloudy />;
             break;
-        case '03d' || '03n': {
+        case '03d':
+            icon = <WiDaySunnyOvercast />;
+            break;
+        case '03n':
+            icon = <WiNightPartlyCloudy />;
+            break;
+        case '04d' || '04n': {
             icon = <WiCloudy />;
             break;
         }

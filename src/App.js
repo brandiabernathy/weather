@@ -1,5 +1,5 @@
 import React from 'react';
-// import './App.scss';
+import './index.css';
 import Currently from './components/Currently';
 import Forecast from './components/Forecast';
 import Hourly from './components/Hourly';
@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app grid gap-5">
+    <div className="app bg-slate-100 p-8 grid gap-5">
       <Currently current={weather.current}/>
       <Forecast forecast={weather.daily}/>
       <Hourly hourly={weather.hourly}/>
