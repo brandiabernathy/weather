@@ -29,7 +29,7 @@ export default function Currently(props) {
     }
 
     return (
-        <section className="bg-white rounded-md shadow-sm w-1/2 p-6 text-center grid grid-cols-2 gap-4 items-center">
+        <section className="bg-white rounded-md shadow-sm w-1/2 p-10 text-center grid grid-cols-2 gap-4 items-center">
              <div>
                  <div className="flex items-center justify-center mb-5">
                     <TiLocationArrowOutline className="inline mr-1"/>

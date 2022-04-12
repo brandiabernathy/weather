@@ -3,15 +3,14 @@ import Day from './Day';
 
 
 export default function Forecast(props) {
-    // let mod_days = props.forecast.splice(1, 1);
-    // console.log('mod days', mod_days);
+    let five_days = props.forecast.slice(1, 6);
 
-    const days = props.forecast.map(day => {
+    const days = five_days.map(day => {
         return <Day key={day.dt} day={day} />
     })
 
     return (
-        <section className="flex flex-row justify-between w-1/2">
+        <section className="grid grid-cols-5 gap-4 justify-between w-1/2">
             { days }
         </section>
     )

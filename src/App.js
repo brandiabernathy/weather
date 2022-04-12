@@ -32,7 +32,7 @@ function App() {
     <div className="app grid gap-5">
       <Currently current={weather.current}/>
       <Forecast forecast={weather.daily}/>
-      <Hourly />
+      <Hourly hourly={weather.hourly}/>
     </div>
   );
 }
