@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   return (
-    <div className="app">
+    <div className="app grid gap-5">
       <Currently current={weather.current}/>
       <Forecast forecast={weather.daily}/>
       <Hourly />

@@ -11,7 +11,7 @@ export default function Forecast(props) {
     })
 
     return (
-        <section className="flex flex-row">
+        <section className="flex flex-row justify-between w-1/2">
             { days }
         </section>
     )
