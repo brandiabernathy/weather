@@ -5,8 +5,6 @@ import { WiDaySunny, WiNightClear, WiDayCloudy, WiNightAltCloudy, WiCloudy} from
 
 
 export default function Day(props) {
-
-    // console.log(props);
     let icon = '';
 
     switch(props.day.weather[0].icon) {

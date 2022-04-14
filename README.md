@@ -1,4 +1,20 @@
-# Getting Started with Create React App
+# Weather App
+A simple weather dashboard
+
+## Tools used
+- React
+- Tailwind CSS
+- Chart.js
+- OpenWeather API
+- Improve the weather icons
+
+## TODO
+- Get user's location upon page load?
+- Allow for users to search a location
+- Metric vs Imperial
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

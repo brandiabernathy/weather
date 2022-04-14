@@ -3,10 +3,11 @@ import React from 'react';
 import { TiLocationArrowOutline } from "react-icons/ti";
 
 //weather icons
-import { WiDaySunny, WiNightClear, WiDaySunnyOvercast, WiNightPartlyCloudy, WiDayCloudy, WiNightAltCloudy, WiCloudy} from "react-icons/wi";
+import { WiDaySunny, WiNightClear, WiDaySunnyOvercast, WiNightPartlyCloudy, WiDayCloudy, WiNightAltCloudy, WiCloudy } from "react-icons/wi";
 
 
 export default function Currently(props) {
+    console.log('props', props)
     let icon = '';
 
     switch(props.current.weather[0].icon) {
@@ -35,22 +36,27 @@ export default function Currently(props) {
     }
 
     return (
-        <section className="bg-white rounded-md shadow-sm w-1/2 p-10 text-center grid grid-cols-2 gap-4 items-center">
+        <section class="bg-white rounded-md shadow-sm p-10 text-center grid grid-cols-2 gap-4 items-center mb-5">
              <div>
+                 <div className="font-bold mb-2">Now</div>
                  <div className="flex items-center justify-center mb-5">
                     <TiLocationArrowOutline className="inline mr-1"/>
                     <span>Gilbert, AZ</span>
                 </div>
-                <div className="flex justify-center">
-                    <span className="text-7xl">{Number((props.current.temp).toFixed(0))}</span>
-                    <span className="text-4xl">&deg;</span>
+                <div className="flex justify-center mb-5">
+                    <div className="relative">
+                        <span className="text-7xl">{Number((props.current.temp).toFixed(0))}</span>
+                        <span className="text-4xl absolute">&deg;</span>
+                    </div>
+                </div>
+                <div>
+                    <span className="mr-5">Hi: {Number(props.day.temp.max).toFixed(0)}&deg;</span>
+                    <span>Lo: {Number(props.day.temp.min).toFixed(0)}&deg;</span>
                 </div>
             </div>
             <div className="flex justify-center">
-                <div className="text-9xl">{icon}</div>
+                <div className="text-10xl">{icon}</div>
             </div>
-            {/* <div>Humidity | {props.current.humidity}%</div>
-            <div>Wind | {Number(props.current.wind_speed).toFixed(0)} mph</div> */}
         </section>
     )
 }

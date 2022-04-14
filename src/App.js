@@ -3,6 +3,7 @@ import './index.css';
 import Currently from './components/Currently';
 import Forecast from './components/Forecast';
 import Hourly from './components/Hourly';
+import Details from './components/Details';
 import axios from 'axios';
 
 function App() {
@@ -14,9 +15,8 @@ function App() {
     hourly: '',
 })
 
-  console.log('weather', weather);
-
   React.useEffect(() => {
+    console.log('useeffect');
       axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=33.31&lon=-111.74&units=imperial&appid=' + apikey)
       .then(res => {
         console.log('hello', res);
@@ -29,10 +29,15 @@ function App() {
   }, []);
 
   return (
-    <div className="app bg-slate-100 p-8 grid gap-5">
-      <Currently current={weather.current}/>
-      <Forecast forecast={weather.daily}/>
-      <Hourly hourly={weather.hourly}/>
+    <div className="app bg-slate-100 p-8 grid grid-cols-2 gap-5">
+      <div className="col-span-1">
+          <Currently current={weather.current} day={weather.daily[0]}/>
+          <Details current={weather.current}/>
+      </div>
+      <div>
+        <Forecast forecast={weather.daily}/>
+        <Hourly hourly={weather.hourly}/>
+      </div>
     </div>
   );
 }
