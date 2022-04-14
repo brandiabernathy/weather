@@ -6,12 +6,12 @@ A simple weather dashboard
 - Tailwind CSS
 - Chart.js
 - OpenWeather API
-- Improve the weather icons
 
 ## TODO
 - Get user's location upon page load?
 - Allow for users to search a location
 - Metric vs Imperial
+- Improve the weather icons
 
 
 ## Getting Started with Create React App
