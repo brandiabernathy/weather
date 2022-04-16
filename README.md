@@ -11,7 +11,10 @@ A simple weather dashboard
 - Get user's location upon page load?
 - Allow for users to search a location
 - Metric vs Imperial
-- Improve the weather icons
+- Improve the choosing of weather icons
+- Add more weather icons
+- Figure out wind direction in cardinal directions
+- Add precipitation percentage?
 
 
 ## Getting Started with Create React App
