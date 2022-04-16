@@ -10,7 +10,7 @@ export default function Forecast(props) {
     })
 
     return (
-        <section className="grid grid-cols-5 gap-4 justify-between mb-5">
+        <section className="grid lg:grid-cols-5 gap-4 lg:justify-between mb-5">
             { days }
         </section>
     )

@@ -7,7 +7,7 @@ import { RiDashboard3Line } from "react-icons/ri";
 
 export default function Details(props) {
     return (
-        <section className="bg-white rounded-md shadow-sm p-6 w-1/2">
+        <section className="bg-white rounded-md shadow-sm p-6">
             <div className="grid items-center grid-cols-details gap-2 m-2">
                 <span className="text-xl"><FiSunrise /></span>
                 <span>Sunrise </span>

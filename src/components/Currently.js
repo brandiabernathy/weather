@@ -29,14 +29,15 @@ export default function Currently(props) {
         case '03n':
             icon = <WiNightPartlyCloudy />;
             break;
-        case '04d' || '04n': {
+        case '04d':
+        case '04n': {
             icon = <WiCloudy />;
             break;
         }
     }
 
     return (
-        <section class="bg-white rounded-md shadow-sm p-10 text-center grid grid-cols-2 gap-4 items-center mb-5">
+        <section className="bg-white rounded-md shadow-sm p-10 text-center grid md:grid-cols-2 gap-4 items-center mb-5">
              <div>
                  <div className="font-bold mb-2">Now</div>
                  <div className="flex items-center justify-center mb-5">
