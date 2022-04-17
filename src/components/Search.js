@@ -2,10 +2,23 @@ import React from 'react';
 import axios from 'axios';
 
 
-export default function Search(props) {
+export default function Search({props, getLocation}) {
     const apikey = process.env.REACT_APP_ACCUWEATHER_API_KEY;
-    let searchResults;
+    let searchResults = [
+        {
+            name: 'Gilbert',
+        },
+        {
+            name: 'Gilbertsville',
+        },
+        {
+            name: 'Gilroy',
+        }
+    ];
     let resultsDivs;
+     resultsDivs = searchResults.map(item => {
+                return <div className="py-2 hover:bg-cyan-600 cursor-pointer" onClick={() => getLocation(item.name)}><span className="px-3">{item.name}</span></div>
+            })
 
     function search(e) {
         let searchTerm = e.target.value;
@@ -15,9 +28,9 @@ export default function Search(props) {
         //     console.log('search res', res);
         //     searchResults = res.data;
         //     console.log('search results', searchResults);
-        resultsDivs = searchResults.map(item => {
-            return <div className="py-2 hover:bg-cyan-600 cursor-pointer"><span className="px-3">{item.LocalizedName}, {item.CountryLocalizedName}</span></div>
-        })
+            // resultsDivs = searchResults.map(item => {
+            //     return <div className="py-2 hover:bg-cyan-600 cursor-pointer"><span className="px-3">{item.LocalizedName}, {item.CountryLocalizedName}</span></div>
+            // })
         // })
 
     }

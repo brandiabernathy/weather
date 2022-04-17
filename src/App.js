@@ -10,12 +10,24 @@ import axios from 'axios';
 
 function App() {
 	const apikey = process.env.REACT_APP_OPENWEATHER_API_KEY;
+	const apikey2 = process.env.REACT_APP_ACCUWEATHER_API_KEY;
 
 	const [weather, setWeather] = React.useState({
 		current: '',
 		daily: '',
 		hourly: '',
-})
+	})
+
+	function getLocation(key) {
+		console.log('key', key);
+	}
+
+	function getCurrentConditions(locationKey) {
+		axios.get('http://dataservice.accuweather.com/currentconditions/v1/' + locationKey + '&apikey=' + apikey2)
+		.then(res => {
+			console.log('currently', res);
+		})
+	}
 
 	React.useEffect(() => {
 		console.log('useeffect');
@@ -40,7 +52,7 @@ function App() {
 	return (
 		<div className="app bg-slate-100 p-8 grid lg:grid-cols-2 gap-5 min-h-screen">
 			{/* <div className="flex col-span-2 justify-center">
-				<Search />
+				<Search getLocation={getLocation}/>
 			</div> */}
 			<div className="col-span-1">
 					<Currently current={weather.current} day={weather.daily[0]}/>
