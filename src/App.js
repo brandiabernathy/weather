@@ -9,8 +9,7 @@ import Search from './components/Search';
 import axios from 'axios';
 
 function App() {
-	const apikey = process.env.REACT_APP_OPENWEATHER_API_KEY;
-	const apikey2 = process.env.REACT_APP_ACCUWEATHER_API_KEY;
+	const apikey = process.env.REACT_APP_ACCUWEATHER_API_KEY;
 
 	const [weather, setWeather] = React.useState({
 		current: '',
@@ -18,48 +17,48 @@ function App() {
 		hourly: '',
 	})
 
-	function getLocation(key) {
-		console.log('key', key);
-	}
-
-	function getCurrentConditions(locationKey) {
-		axios.get('http://dataservice.accuweather.com/currentconditions/v1/' + locationKey + '&apikey=' + apikey2)
+	function getWeather(locationKey) {
+		axios.get('http://dataservice.accuweather.com/currentconditions/v1/' + locationKey + '?apikey=' + apikey + '&details=true')
 		.then(res => {
 			console.log('currently', res);
+			setWeather(prevState => ({
+				...prevState,
+				current: res.data[0],
+			}))
+		})
+		.then(() => {
+			axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + locationKey + '?apikey=' + apikey +'&details=true')
+			.then(res => {
+				console.log('5 day', res);
+				setWeather(prevState => ({
+					...prevState,
+					daily: res.data.DailyForecasts,
+				}))
+			})
+		})
+		.then(() => {
+			axios.get('http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/' + locationKey + '?apikey=' + apikey + '&details=true')
+			.then(res => {
+				console.log("hourly", res);
+				setWeather(prevState => ({
+					...prevState,
+					hourly: res.data,
+				}))
+			})
 		})
 	}
-
-	React.useEffect(() => {
-		console.log('useeffect');
-			//gilbert
-			axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=33.31&lon=-111.74&units=imperial&appid=' + apikey)
-			//clarkridge
-			// axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=36.46&lon=-92.31&units=imperial&appid=' + apikey)
-			//stl
-			// axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=38.62&lon=-90.19&units=imperial&appid=' + apikey)
-			//minot
-			// axios.get('https://api.openweathermap.org/data/2.5/onecall?lat=48.23&lon=-101.29&units=imperial&appid=' + apikey)
-			.then(res => {
-				console.log('hello', res);
-				setWeather({
-						current: res.data.current,
-						daily: res.data.daily,
-						hourly: res.data.hourly,
-				})
-		})
-	}, []);
 
 	return (
 		<div className="app bg-slate-100 p-8 grid lg:grid-cols-2 gap-5 min-h-screen">
-			{/* <div className="flex col-span-2 justify-center">
-				<Search getLocation={getLocation}/>
-			</div> */}
+			<div className="flex col-span-2 justify-center">
+				<Search getWeather={getWeather}/>
+			</div>
 			<div className="col-span-1">
 					<Currently current={weather.current} day={weather.daily[0]}/>
-					<div className="grid lg:grid-cols-2 gap-5">
-						<Details current={weather.current}/>
-						<Today today={weather.daily[0]}/>
-					</div>
+				<div className="grid lg:grid-cols-2 gap-5">
+					<Details current={weather.current}/>
+					<Today today={weather.daily[0]}/>
+				</div>
 			</div>
 			<div>
 				<Forecast forecast={weather.daily}/>

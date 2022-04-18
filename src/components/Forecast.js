@@ -3,14 +3,18 @@ import Day from './Day';
 
 
 export default function Forecast(props) {
-    let five_days = props.forecast.slice(1, 6);
+    let four_days = props.forecast.slice(1, 5);
 
-    const days = five_days.map(day => {
-        return <Day key={day.dt} day={day} />
-    })
+    let days = [];
+
+    if(props.forecast) {
+        days = four_days.map(day => {
+            return <Day key={day.Date} day={day} />
+        })
+    }
 
     return (
-        <section className="grid lg:grid-cols-5 gap-4 lg:justify-between mb-5">
+        <section className="grid lg:grid-cols-4 gap-4 lg:justify-between mb-5">
             { days }
         </section>
     )

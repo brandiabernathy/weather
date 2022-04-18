@@ -5,10 +5,13 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 export default function Hourly(props) {
-    let consolidated_hourly = props.hourly.slice(0, 18);
+    let labels ='';
+    let data = '';
 
-    let labels = consolidated_hourly.map(hour => dayjs.unix(hour.dt).format('ha'));
-    let data = consolidated_hourly.map(hour => Number(hour.temp).toFixed(0));
+    if(props.hourly) {
+        labels = props.hourly.map(hour => dayjs.unix(hour.EpochDateTime).format('ha'));
+        data = props.hourly.map(hour => hour.Temperature.Value);
+    }
 
     const options = {
         responsive: true,

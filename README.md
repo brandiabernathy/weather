@@ -5,16 +5,14 @@ A simple weather dashboard
 - React
 - Tailwind CSS
 - Chart.js
-- OpenWeather API
+- AccuWeather API
 
 ## TODO
 - Get user's location upon page load?
-- Allow for users to search a location
 - Metric vs Imperial
-- Improve the choosing of weather icons
-- Add more weather icons
-- Figure out wind direction in cardinal directions
-- Add precipitation percentage?
+- Add weather icons
+- Add precipitation info?
+- Add AccuWeather attribution
 
 
 ## Getting Started with Create React App
