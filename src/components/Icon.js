@@ -8,7 +8,6 @@ import {
     WiDayCloudyHigh,
     WiShowers,
     WiDayShowers,
-    WiDaySunnyOvercast,
     WiDayCloudy,
     WiCloudy,
     WiStormShowers,
@@ -24,6 +23,10 @@ import {
     WiNightCloudy,
     WiNightFog,
     WiNightShowers,
+    WiHot,
+    WiNightCloudyHigh,
+    WiNightStormShowers,
+    WiNightSnow,
 } from "react-icons/wi";
 
 export default function Icon(props) {
