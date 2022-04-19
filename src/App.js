@@ -6,6 +6,7 @@ import Hourly from './components/Hourly';
 import Details from './components/Details';
 import Today from './components/Today';
 import Search from './components/Search';
+import Footer from './components/Footer';
 import axios from 'axios';
 
 function App() {
@@ -54,9 +55,9 @@ function App() {
 				<Search getWeather={getWeather}/>
 			</div>
 			<div className="col-span-1">
-					<Currently current={weather.current} day={weather.daily[0]}/>
+					<Currently current={weather.current}/>
 				<div className="grid lg:grid-cols-2 gap-5">
-					<Details current={weather.current}/>
+					<Details current={weather.current} day={weather.daily[0]}/>
 					<Today today={weather.daily[0]}/>
 				</div>
 			</div>
@@ -64,6 +65,7 @@ function App() {
 				<Forecast forecast={weather.daily}/>
 				<Hourly hourly={weather.hourly}/>
 			</div>
+			<Footer />
 		</div>
 	);
 }

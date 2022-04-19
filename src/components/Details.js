@@ -6,18 +6,19 @@ import { CgDrop, CgDropOpacity, CgSun } from "react-icons/cg";
 import { RiDashboard3Line } from "react-icons/ri";
 
 export default function Details(props) {
+    // console.log('detail props', props);
     return (
         <section className="bg-white rounded-md shadow-sm p-6">
-            {/* <div className="grid items-center grid-cols-details gap-2 m-2">
+            <div className="grid items-center grid-cols-details gap-2 m-2">
                 <span className="text-xl"><FiSunrise /></span>
                 <span>Sunrise </span>
-                <span className="text-right">{dayjs.unix(props.current.sunrise).format('h:mm a')}</span>
+                {props.day && <span className="text-right">{dayjs.unix(props.day.Sun.EpochRise).format('h:mm a')}</span>}
             </div>
             <div className="grid items-center grid-cols-details gap-2 m-2">
                 <span className="text-xl"><FiSunset /> </span>
                 <span>Sunset</span>
-                <span className="text-right">{dayjs.unix(props.current.sunset).format('h:mm a')}</span>
-            </div> */}
+                {props.day && <span className="text-right">{dayjs.unix(props.day.Sun.EpochSet).format('h:mm a')}</span>}
+            </div>
             <div className="grid items-center grid-cols-details gap-2 m-2">
                 <span className="text-xl"><CgDrop /></span>
                 <span>Humidity</span>

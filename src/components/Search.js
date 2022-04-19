@@ -9,7 +9,9 @@ export default function Search({props, getWeather}) {
     let resultsDivs;
 
     function handleClick(key) {
+        document.getElementById('location-search').value = '';
         setSearchResults([]);
+        setResults([]);
         getWeather(key);
     }
 
@@ -17,6 +19,7 @@ export default function Search({props, getWeather}) {
         if(e.target.value.length > 2) {
             axios.get('http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=' + e.target.value + '&apikey=' + apikey)
             .then(res => {
+                console.log('search res', res);
                 setSearchResults(res.data);
                 resultsDivs = res.data.map(item => {
                     return <div className="py-2 hover:bg-cyan-600 cursor-pointer" onClick={() => handleClick(item.Key)}><span className="px-3">{item.LocalizedName}, {item.AdministrativeArea.LocalizedName}, {item.Country.LocalizedName}</span></div>
@@ -34,6 +37,7 @@ export default function Search({props, getWeather}) {
        <div className="relative w-1/4">
            <input
                 type="text"
+                id="location-search"
                 className="py-3 px-6 w-full shadow-sm rounded-full"
                 name="search"
                 placeholder="Search by city or zip code"
