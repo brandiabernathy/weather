@@ -6,7 +6,7 @@ import { CgDrop, CgDropOpacity, CgSun } from "react-icons/cg";
 import { RiDashboard3Line } from "react-icons/ri";
 
 export default function Details(props) {
-    // console.log('detail props', props);
+
     return (
         <section className="bg-white rounded-md shadow-sm p-6">
             <div className="grid items-center grid-cols-details gap-2 m-2">

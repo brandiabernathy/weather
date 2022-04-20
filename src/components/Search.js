@@ -2,27 +2,29 @@ import React from 'react';
 import axios from 'axios';
 
 
-export default function Search({props, getWeather}) {
+export default function Search({props, getWeather, getLocation}) {
     const apikey = process.env.REACT_APP_ACCUWEATHER_API_KEY;
     const [results, setResults] = React.useState([]);
     const [searchResults, setSearchResults] = React.useState([]);
     let resultsDivs;
 
-    function handleClick(key) {
+    function handleClick(key, city, state) {
         document.getElementById('location-search').value = '';
         setSearchResults([]);
         setResults([]);
         getWeather(key);
+        getLocation(city, state)
     }
 
     function search(e) {
         if(e.target.value.length > 2) {
             axios.get('http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=' + e.target.value + '&apikey=' + apikey)
             .then(res => {
-                console.log('search res', res);
                 setSearchResults(res.data);
-                resultsDivs = res.data.map(item => {
-                    return <div className="py-2 hover:bg-cyan-600 cursor-pointer" onClick={() => handleClick(item.Key)}><span className="px-3">{item.LocalizedName}, {item.AdministrativeArea.LocalizedName}, {item.Country.LocalizedName}</span></div>
+                resultsDivs = res.data
+                .filter(item => item.Country.ID == 'US')
+                .map(item => {
+                    return <div className="py-2 hover:bg-cyan-600 cursor-pointer" onClick={() => handleClick(item.Key, item.LocalizedName, item.AdministrativeArea.ID)}><span className="px-3">{item.LocalizedName}, {item.AdministrativeArea.ID}</span></div>
                 })
                 setResults(resultsDivs);
             })
@@ -40,7 +42,7 @@ export default function Search({props, getWeather}) {
                 id="location-search"
                 className="py-3 px-6 w-full shadow-sm rounded-full"
                 name="search"
-                placeholder="Search by city or zip code"
+                placeholder="Search US City"
                 autoComplete="off"
                 onChange={search}
             />

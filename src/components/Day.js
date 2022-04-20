@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import Icon from './Icon';
 
 export default function Day(props) {
-    // console.log('daily', props);
 
     return (
         <div className="bg-white rounded-md shadow-sm text-center p-5 flex flex-row flex-col justify-center items-center">
