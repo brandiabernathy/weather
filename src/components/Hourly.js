@@ -5,12 +5,18 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 export default function Hourly(props) {
-    let labels ='';
-    let data = '';
+    let labels = [];
+    let data = [];
 
     if(props.hourly) {
         labels = props.hourly.map(hour => dayjs.unix(hour.EpochDateTime).format('ha'));
         data = props.hourly.map(hour => hour.Temperature.Value);
+    }
+    else {
+        for (let i = 0; i < 12; i++) {
+            labels.push(1 + i);
+            data.push(50 + i);
+        }
     }
 
     const options = {
