@@ -22,9 +22,9 @@ export default function Search({props, getWeather, getLocation}) {
             .then(res => {
                 setSearchResults(res.data);
                 resultsDivs = res.data
-                .filter(item => item.Country.ID == 'US')
+                .filter(item => item.Country.ID === 'US')
                 .map(item => {
-                    return <div className="py-2 hover:bg-cyan-600 cursor-pointer" onClick={() => handleClick(item.Key, item.LocalizedName, item.AdministrativeArea.ID)}><span className="px-3">{item.LocalizedName}, {item.AdministrativeArea.ID}</span></div>
+                    return <div className="py-2 hover:bg-sky-100 cursor-pointer" onClick={() => handleClick(item.Key, item.LocalizedName, item.AdministrativeArea.ID)}><span className="px-3">{item.LocalizedName}, {item.AdministrativeArea.ID}</span></div>
                 })
                 setResults(resultsDivs);
             })
@@ -36,7 +36,7 @@ export default function Search({props, getWeather, getLocation}) {
     }
 
     return (
-       <div className="relative w-1/4">
+       <div className="relative lg:w-1/4 mb-4">
            <input
                 type="text"
                 id="location-search"
@@ -46,7 +46,7 @@ export default function Search({props, getWeather, getLocation}) {
                 autoComplete="off"
                 onChange={search}
             />
-             {searchResults && <div className="absolute w-full bg-white rounded-sm mt-1 divide-y divide-slate-200 shadow-md">
+             {searchResults && <div className="absolute w-full bg-white rounded-sm mt-1 z-10 divide-y divide-slate-200 shadow-md">
                 {results}
             </div>}
        </div>

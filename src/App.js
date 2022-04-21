@@ -59,18 +59,18 @@ function App() {
 	}
 
 	return (
-		<div className="app bg-slate-100 p-8 grid lg:grid-cols-2 gap-5 min-h-screen">
+		<div className="app bg-slate-100 p-8 lg:grid lg:grid-cols-2 gap-5 min-h-screen">
 			<div className="flex col-span-2 justify-center">
 				<Search getWeather={getWeather} getLocation={getLocation}/>
 			</div>
-			<div className="col-span-1">
+			<div className="col-span-1 mb-4">
 					<Currently current={weather.current} location={location}/>
-				<div className="grid lg:grid-cols-2 gap-5">
+				<div className="grid xl:grid-cols-2 gap-5">
 					<Details current={weather.current} day={weather.daily[0]}/>
 					<Today today={weather.daily[0]}/>
 				</div>
 			</div>
-			<div>
+			<div className="mb-4">
 				<Forecast forecast={weather.daily}/>
 				<Hourly hourly={weather.hourly}/>
 			</div>
