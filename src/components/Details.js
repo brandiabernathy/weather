@@ -1,9 +1,14 @@
 import React from 'react';
 import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone';
 
 import { FiSunrise, FiSunset, FiWind} from "react-icons/fi";
 import { CgDrop, CgDropOpacity, CgSun } from "react-icons/cg";
 import { RiDashboard3Line } from "react-icons/ri";
+
+dayjs.extend(utc);
+dayjs.extend(timezone);
 
 export default function Details(props) {
 
@@ -12,12 +17,12 @@ export default function Details(props) {
             <div className="grid items-center grid-cols-details gap-2 m-2">
                 <span className="text-xl"><FiSunrise /></span>
                 <span>Sunrise </span>
-                {props.day && <span className="text-right">{dayjs.unix(props.day.Sun.EpochRise).format('h:mm a')}</span>}
+                {props.day && <span className="text-right">{dayjs.unix(props.day.Sun.EpochRise).tz(props.timezone).format('h:mm a')}</span>}
             </div>
             <div className="grid items-center grid-cols-details gap-2 m-2">
                 <span className="text-xl"><FiSunset /> </span>
                 <span>Sunset</span>
-                {props.day && <span className="text-right">{dayjs.unix(props.day.Sun.EpochSet).format('h:mm a')}</span>}
+                {props.day && <span className="text-right">{dayjs.unix(props.day.Sun.EpochSet).tz(props.timezone).format('h:mm a')}</span>}
             </div>
             <div className="grid items-center grid-cols-details gap-2 m-2">
                 <span className="text-xl"><CgDrop /></span>

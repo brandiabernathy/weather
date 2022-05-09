@@ -15,6 +15,7 @@ function App() {
 	const [location, setLocation] = React.useState({
 		city: '',
 		state: '',
+		timezone: '',
 	});
 
 	const [weather, setWeather] = React.useState({
@@ -23,11 +24,16 @@ function App() {
 		hourly: '',
 	})
 
-	function getLocation(city, state) {
-		setLocation({
-			city: city,
-			state: state,
-		});
+	function getLocation(locationKey, city, state) {
+		axios.get('http://dataservice.accuweather.com/locations/v1/' + locationKey + '?apikey=' + apikey + '&details=true')
+		.then(res => {
+			console.log("res", res)
+			setLocation({
+				city: city,
+				state: state,
+				timezone: res.data.TimeZone.Name,
+			});
+		})
 	}
 
 	function getWeather(locationKey) {
@@ -66,7 +72,7 @@ function App() {
 			<div className="col-span-1 mb-4">
 					<Currently current={weather.current} location={location}/>
 				<div className="grid xl:grid-cols-2 gap-5">
-					<Details current={weather.current} day={weather.daily[0]}/>
+					<Details current={weather.current} day={weather.daily[0]} timezone={location.timezone}/>
 					<Today today={weather.daily[0]}/>
 				</div>
 			</div>

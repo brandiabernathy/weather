@@ -13,7 +13,7 @@ export default function Search({props, getWeather, getLocation}) {
         setSearchResults([]);
         setResults([]);
         getWeather(key);
-        getLocation(city, state)
+        getLocation(key, city, state)
     }
 
     function search(e) {
@@ -24,7 +24,7 @@ export default function Search({props, getWeather, getLocation}) {
                 resultsDivs = res.data
                 .filter(item => item.Country.ID === 'US')
                 .map(item => {
-                    return <div className="py-2 hover:bg-sky-100 cursor-pointer" onClick={() => handleClick(item.Key, item.LocalizedName, item.AdministrativeArea.ID)}><span className="px-3">{item.LocalizedName}, {item.AdministrativeArea.ID}</span></div>
+                    return <div className="py-2 hover:bg-sky-100 cursor-pointer" key={item.Key} onClick={() => handleClick(item.Key, item.LocalizedName, item.AdministrativeArea.ID)}><span className="px-3">{item.LocalizedName}, {item.AdministrativeArea.ID}</span></div>
                 })
                 setResults(resultsDivs);
             })
