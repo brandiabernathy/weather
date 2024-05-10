@@ -36,7 +36,7 @@ function App() {
 	}
 
 	function getWeather(locationKey) {
-		axios.get('http://dataservice.accuweather.com/currentconditions/v1/' + locationKey + '?apikey=' + apikey + '&details=true')
+		axios.get('https://dataservice.accuweather.com/currentconditions/v1/' + locationKey + '?apikey=' + apikey + '&details=true')
 		.then(res => {
 			setWeather(prevState => ({
 				...prevState,
@@ -44,7 +44,7 @@ function App() {
 			}))
 		})
 		.then(() => {
-			axios.get('http://dataservice.accuweather.com/forecasts/v1/daily/5day/' + locationKey + '?apikey=' + apikey +'&details=true')
+			axios.get('https://dataservice.accuweather.com/forecasts/v1/daily/5day/' + locationKey + '?apikey=' + apikey +'&details=true')
 			.then(res => {
 				setWeather(prevState => ({
 					...prevState,
@@ -53,7 +53,7 @@ function App() {
 			})
 		})
 		.then(() => {
-			axios.get('http://dataservice.accuweather.com/forecasts/v1/hourly/12hour/' + locationKey + '?apikey=' + apikey + '&details=true')
+			axios.get('https://dataservice.accuweather.com/forecasts/v1/hourly/12hour/' + locationKey + '?apikey=' + apikey + '&details=true')
 			.then(res => {
 				setWeather(prevState => ({
 					...prevState,
