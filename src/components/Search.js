@@ -18,7 +18,7 @@ export default function Search({props, getWeather, getLocation}) {
 
     function search(e) {
         if(e.target.value.length > 2) {
-            axios.get('http://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=' + e.target.value + '&apikey=' + apikey)
+            axios.get('https://dataservice.accuweather.com/locations/v1/cities/autocomplete?q=' + e.target.value + '&apikey=' + apikey)
             .then(res => {
                 setSearchResults(res.data);
                 resultsDivs = res.data
