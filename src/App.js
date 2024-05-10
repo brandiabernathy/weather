@@ -27,7 +27,6 @@ function App() {
 	function getLocation(locationKey, city, state) {
 		axios.get('https://dataservice.accuweather.com/locations/v1/' + locationKey + '?apikey=' + apikey + '&details=true')
 		.then(res => {
-			console.log("res", res)
 			setLocation({
 				city: city,
 				state: state,
